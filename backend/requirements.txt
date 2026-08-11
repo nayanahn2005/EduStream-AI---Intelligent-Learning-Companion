@@ -1,0 +1,7 @@
+fastapi==0.115.12
+uvicorn[standard]==0.34.3
+openai==1.82.0
+pydantic==2.11.3
+PyMuPDF==1.25.5
+python-docx==1.1.2
+python-multipart==0.0.20
