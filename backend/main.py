@@ -296,7 +296,9 @@ def _build_system_prompt(mode: str, target_language: str, question_count: int = 
 # Rough estimate: 1 token ≈ 4 chars.
 # Budget: 12K total - ~500 system prompt - ~2K max_tokens - ~1K buffer = ~8.5K input
 # Safe limit: 20K chars (~5K tokens) leaves generous headroom.
-MODEL = "llama-3.3-70b-versatile"
+# Groq model catalog changes frequently. Check available models at:
+# https://api.groq.com/openai/v1/models
+MODEL = "qwen/qwen3.8-27b"
 CHAR_LIMIT = 20_000
 
 
@@ -460,7 +462,7 @@ async def health_check():
         "service": "EduStream AI",
         "status": "operational",
         "version": "2.0.0",
-        "engine": "Groq (Llama 3.3 70B)",
+        "engine": "Groq (Qwen 3.8 27B)",
         "api_keys": f"{key_pool.count} key(s) loaded" if key_pool.available else "missing",
     }
 
@@ -471,7 +473,7 @@ async def get_capabilities():
         "modes": sorted(SUPPORTED_MODES),
         "languages": sorted(SUPPORTED_LANGUAGES),
         "max_content_length": 500000,
-        "model": "llama-3.3-70b-versatile",
+        "model": "qwen/qwen3.8-27b",
         "version": "2.0.0"
     }
 
